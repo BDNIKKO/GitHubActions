@@ -44,9 +44,14 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           echo "$HEROKU_API_KEY" | heroku auth:token
+          heroku whoami
 
-      - name: Add Heroku Remote
-        run: git remote add heroku https://git.heroku.com/githubactions.git
-
-      - name: Push to Heroku
-        run: git push heroku main
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          git init
+          git remote add heroku https://git.heroku.com/githubactions.git
+          git add .
+          git commit -m "Deploy via GitHub Actions"
+          git push heroku main -f
