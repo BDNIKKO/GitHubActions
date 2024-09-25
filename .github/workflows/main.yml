@@ -47,7 +47,7 @@ jobs:
           heroku whoami
 
       - name: Set Heroku Git Remote
-        run: heroku git:remote -a githubactions
+        run: git remote add heroku https://git.heroku.com/githubactions.git
 
       - name: Deploy to Heroku
         run: git push heroku main
