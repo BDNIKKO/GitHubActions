@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20'  # Use your node version here
 
       - name: Install dependencies
         run: npm install
@@ -29,16 +29,20 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Ensure build happens before deploy
+    needs: build  # Ensure the build job runs before the deploy job
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          git remote remove heroku || true  # Remove any existing Heroku remote
-          git remote add heroku https://git.heroku.com/githubactions.git
+          echo "$HEROKU_API_KEY" | heroku auth:token
+          heroku git:remote -a githubactions
           git push heroku main
