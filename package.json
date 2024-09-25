@@ -1,7 +1,7 @@
 {
   "name": "githubactions",
   "version": "1.0.0",
-  "description": "",
+  "description": "A sample Node.js app for Heroku deployment using GitHub Actions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No tests available\"",
@@ -9,6 +9,6 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Your Name",
   "license": "ISC"
 }
