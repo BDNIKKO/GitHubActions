@@ -46,6 +46,11 @@ jobs:
           echo "$HEROKU_API_KEY" | heroku auth:token
           heroku whoami
 
+      - name: Configure Git Identity
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
