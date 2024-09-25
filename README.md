@@ -123,6 +123,8 @@ To verify that the workflows are working properly:
 1. **CI Workflow**: Ensure the build step runs successfully when code is pushed to the `main` branch.
 2. **CD Workflow**: Validate that the app deploys successfully to Heroku and can be accessed via the Heroku URL.
    - Access the deployed app at: `https://YOUR_APP_NAME.herokuapp.com`
+   - my app currently runs on '[githubactions-aec20e1fb4c7.herokuapp.com] but that could change!
+
 
 ### Example Output
 
